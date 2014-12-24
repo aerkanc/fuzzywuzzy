@@ -27,7 +27,7 @@ class StringProcessingTest(unittest.TestCase):
             proc_string = StringProcessor.replace_non_letters_non_numbers_with_whitespace(string)
             regex = re.compile(r"(?ui)[\W]")
             for expr in regex.finditer(proc_string):
-                self.assertEquals(expr.group(), " ")
+                self.assertEqual(expr.group(), " ")
 
     def test_dont_condense_whitespace(self):
         s1 = "new york mets - atlanta braves"
@@ -151,6 +151,8 @@ class RatioTest(unittest.TestCase):
         # a partial match is scaled by .9
         self.assertEqual(fuzz.WRatio(self.s1, self.s3), 90)
 
+    def testPartialMatch(self):
+        print(fuzz.partial_match(self.s1, self.s3)["match"])
     def testWRatioMisorderedMatch(self):
         # misordered full matches are scaled by .95
         self.assertEqual(fuzz.WRatio(self.s4, self.s5), 95)
