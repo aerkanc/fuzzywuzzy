@@ -153,6 +153,7 @@ class RatioTest(unittest.TestCase):
 
     def testPartialMatch(self):
         print(fuzz.partial_match(self.s1, self.s3)["match"])
+        print(fuzz.partial_match(self.s1, "Lorem ipsum"))
     def testWRatioMisorderedMatch(self):
         # misordered full matches are scaled by .95
         self.assertEqual(fuzz.WRatio(self.s4, self.s5), 95)
