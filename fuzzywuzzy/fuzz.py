@@ -135,9 +135,9 @@ def partial_match(s1, s2):
         r = m2.ratio()
         if r > .995:
             return {"ratio": 100, "match": long_substr}
-        elif matches[r] is None:
+        elif matches[int(r * 1000)] is None:
             scores.append(r)
-            matches[r] = {"ratio": r * 100, "match": long_substr}
+            matches[int(r * 1000)] = {"ratio": r * 1000, "match": long_substr}
 
     return matches[max(scores)]
 
